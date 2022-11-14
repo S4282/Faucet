@@ -109,7 +109,7 @@ export default function Home() {
     }
   };
 
-  const buyCoffee = async () => {
+  const withdrawalFaucet = async () => {
     try {
       const { ethereum } = window;
 
@@ -182,81 +182,6 @@ export default function Home() {
       });
     }
   };
-
-  const useFaucet = async () => {
-    try {
-      const { ethereum } = window;
-
-      if (ethereum) {
-        const provider = new ethers.providers.Web3Provider(ethereum);
-        const signer = provider.getSigner();
-        const faucetContract = new ethers.Contract(
-          contractAddress,
-          contractABI,
-          signer
-        );
-
-        let count = await faucetContract.getTotalWithdrawals();
-        console.log("Retrieved total withdrawal count...", count.toNumber());
-
-        /*
-         * Execute the actual coffee from your smart contract
-         */
-        const faucetTxn = await faucetContract.withdraw(
-          message ? message : "Enjoy Your Goerli ETH!",
-          name ? name : "Anonymous",
-          ethers.utils.parseEther("0.001"),
-          {
-            gasLimit: 300000,
-          }
-        );
-        console.log("Mining...", faucetTxn.hash);
-
-        toast.info("Sending Ether for testing...", {
-          position: "top-left",
-          autoClose: 18050,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-        await faucetTxn.wait();
-
-        console.log("Mined -- ", faucetContract.hash);
-
-        count = await faucetContract.getTotalWithdrawals();
-
-        console.log("Retrieved total coffee count...", count.toNumber());
-
-        setMessage("");
-        setName("");
-
-        toast.success("Ether Sent!", {
-          position: "top-left",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      } else {
-        console.log("Ethereum object doesn't exist!");
-      }
-    } catch (error) {
-      toast.error(`${error.message}`, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    }
-  };
-
 
   /*
    * Create a method that gets all coffee from your contract
@@ -409,7 +334,7 @@ export default function Home() {
                 <button
                   className="bg-blue-500 hover:bg-blue-700 text-center text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                   type="button"
-                  onClick={buyCoffee}
+                  onClick={withdrawalFaucet}
                 >
                   Support $5
                 </button>
