@@ -336,17 +336,17 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
-        <title>Goerli ETH Faucet</title>
-        <link rel="icon" href="/favicon.ico" />
+        {/*<title>Goerli ETH Faucet</title> */}
+        <link rel="icon" href="/a.png" />
       </Head>
       <div className="contract-balance text-white ">
         <h1> Faucet Balance: {balance}</h1>
         </div>
 
       <main className="flex flex-col items-center w-full flex-1 px-20 text-center">
-        <h1 className="text-6xl font-bold text-blue-600 mb-6">
-          Goerli ETH Faucet
-        </h1>
+        {/*<h1 className="text-6xl font-bold text-blue-600 mb-6">
+          Goerli ETH Faucet*
+  </h1>*/}
         {/*
          * If there is currentAccount render this form, else render a button to connect wallet
          */}
@@ -408,6 +408,12 @@ export default function Home() {
             Connect Your Wallet
           </button>
         )}
+
+        {/* Logo */}
+        <div className="logo">  <img
+        src="https://i.ibb.co/6FJKM5k/a.png"
+        alt="logo"
+      /></div>
 
         {allCoffee.map((coffee, index) => {
           return (

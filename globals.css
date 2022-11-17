@@ -7,6 +7,10 @@
     background: linear-gradient(0deg, rgba(33,250,120,1) 0%, rgba(250,180,241,1) 100%);
 }
 
+.w-full {
+    margin-top: 50px;
+}
+
 .main-box {
     position: relative;
     background: rgb(25, 27, 31);
@@ -32,8 +36,16 @@
 .contract-balance {
     color: black;
     position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.logo {
+    position: absolute;
     left: 0;
     top: 0;
+    margin-bottom: 0%;
+    background-size: 100% 100%
 }
 
 
